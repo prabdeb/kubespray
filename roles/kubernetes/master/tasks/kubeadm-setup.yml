@@ -58,6 +58,7 @@
       {%- if hostvars[host]['access_ip'] is defined -%}
       {{ hostvars[host]['access_ip'] }}
       {%- endif %}
+      
       {%- if hostvars[host]['ip'] is defined -%}
       {{ hostvars[host]['ip'] }}
       {% else %}
