@@ -54,14 +54,13 @@
       {%- if loadbalancer_apiserver is defined %}
       {{ apiserver_loadbalancer_domain_name }}
       {%- endif %}
-      {% for host in groups['kube-master'] -%}
+      {%- for host in groups['kube-master'] -%}
       {%- if hostvars[host]['access_ip'] is defined -%}
-      {{ hostvars[host]['access_ip'] }}
+      {{ hostvars[host]['access_ip'] }}{{''}}
       {%- endif %}
-      
       {%- if hostvars[host]['ip'] is defined -%}
       {{ hostvars[host]['ip'] }}
-      {% else %}
+      {%- else %}
       {{ hostvars[host]['ansible_default_ipv4']['address'] }}
       {%- endif %}
       {%- endfor %}
